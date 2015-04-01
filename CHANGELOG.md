@@ -1,4 +1,4 @@
 CHANGELOG
 =========
 
-v0.9.0 - Initial release 03/31/15
+v0.9.0 - Initial release 04/01/15
