@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Grunt-kobold by preceptorjs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Grunt-kobold</h1>
+      <h2 class="project-tagline">Grunt: Grunt plugin for Kobold</h2>
+      <a href="https://github.com/preceptorjs/grunt-kobold" class="btn">View on GitHub</a>
+      <a href="https://github.com/preceptorjs/grunt-kobold/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/preceptorjs/grunt-kobold/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="grunt-kobold" class="anchor" href="#grunt-kobold" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grunt-Kobold</h1>
+
+<p>Grunt plugin for Kobold</p>
+
+<p><a href="http://travis-ci.org/preceptorjs/grunt-kobold"><img src="https://img.shields.io/travis/preceptorjs/grunt-kobold.svg" alt="Build Status"></a>
+<a href="https://coveralls.io/r/preceptorjs/grunt-kobold"><img src="https://img.shields.io/coveralls/preceptorjs/grunt-kobold.svg" alt="Coveralls Coverage"></a>
+<a href="https://codeclimate.com/github/preceptorjs/grunt-kobold"><img src="https://img.shields.io/codeclimate/github/preceptorjs/grunt-kobold.svg" alt="Code Climate Grade"></a></p>
+
+<p><a href="https://www.npmjs.com/package/grunt-kobold"><img src="https://badge.fury.io/js/grunt-kobold.svg" alt="NPM Version"></a>
+<a href="https://www.npmjs.com/package/grunt-kobold"><img src="https://img.shields.io/npm/l/grunt-kobold.svg" alt="NPM License"></a></p>
+
+<p><a href="https://www.npmjs.com/package/grunt-kobold"><img src="https://nodei.co/npm/grunt-kobold.png?downloads=true&amp;stars=true" alt="NPM"></a>
+<a href="https://www.npmjs.com/package/grunt-kobold"><img src="https://nodei.co/npm-dl/grunt-kobold.png?months=3&amp;height=2" alt="NPM"></a></p>
+
+<p><a href="http://preceptorjs.github.io/grunt-kobold/coverage/lcov-report/"><img src="https://img.shields.io/badge/Coverage_Report-Available-blue.svg" alt="Coverage Report"></a>
+<a href="http://preceptorjs.github.io/grunt-kobold/docs/"><img src="https://img.shields.io/badge/API_Documentation-Available-blue.svg" alt="API Documentation"></a></p>
+
+<p><a href="https://gitter.im/preceptorjs/support"><img src="https://img.shields.io/badge/Support-Gitter_IM-yellow.svg" alt="Gitter Support"></a></p>
+
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li>
+<a href="#the-kobold-task">The "kobold" Task</a>
+
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#options">Options</a></li>
+<li><a href="#usage-examples">Usage Examples</a></li>
+</ul>
+</li>
+<li><a href="#third-party-libraries">Third-party libraries</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Install this module with the following command:</p>
+
+<div class="highlight highlight-shell"><pre>npm install grunt-kobold</pre></div>
+
+<p>Add the module to your <code>package.json</code> dependencies:</p>
+
+<div class="highlight highlight-shell"><pre>npm install --save grunt-kobold</pre></div>
+
+<p>Add the module to your <code>package.json</code> dev-dependencies:</p>
+
+<div class="highlight highlight-shell"><pre>npm install --save-dev grunt-kobold</pre></div>
+
+<p>This plugin requires Grunt.</p>
+
+<p>If you haven't used <a href="http://gruntjs.com/">Grunt</a> before, be sure to check out the <a href="http://gruntjs.com/getting-started">Getting Started</a> guide, as it explains how to create a <a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> as well as install and use Grunt plugins.</p>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:</p>
+
+<div class="highlight highlight-javascript"><pre>grunt.loadNpmTasks(<span class="pl-s"><span class="pl-pds">'</span>grunt-kobold<span class="pl-pds">'</span></span>);</pre></div>
+
+<h2>
+<a id="the-kobold-task" class="anchor" href="#the-kobold-task" aria-hidden="true"><span class="octicon octicon-link"></span></a>The "kobold" task</h2>
+
+<h3>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>In your project's Gruntfile, add a section named <code>kobold</code> to the data object passed into <code>grunt.initConfig()</code>.</p>
+
+<div class="highlight highlight-javascript"><pre>grunt.initConfig({
+    kobold<span class="pl-k">:</span> {
+        your_target<span class="pl-k">:</span> {
+            <span class="pl-c">// Target-specific Kobold options go here.</span>
+        },
+    },
+})</pre></div>
+
+<h3>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<h4>
+<a id="optionsconfig" class="anchor" href="#optionsconfig" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.config</h4>
+
+<p>Type: <code>Object</code> --optional--</p>
+
+<p>Options that would be otherwise in the global config file. 
+You can also require the js or json file instead of adding here all the configurations.</p>
+
+<h4>
+<a id="optionsmochaargs" class="anchor" href="#optionsmochaargs" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.mochaArgs</h4>
+
+<p>Type: <code>String[]</code> --optional--</p>
+
+<p>List of Mocha arguments that will be passed-through.</p>
+
+<h4>
+<a id="optionsapprovedfolder" class="anchor" href="#optionsapprovedfolder" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.approvedFolder</h4>
+
+<p>Type: <code>String</code> --optional-- (default: 'approved')</p>
+
+<p>Name of the approved folder where Images are defined as approved and how the build images should look like. This can also be the path to a folder.</p>
+
+<h4>
+<a id="optionsbuildfolder" class="anchor" href="#optionsbuildfolder" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.buildFolder</h4>
+
+<p>Type: <code>String</code> --optional-- (default: 'build')</p>
+
+<p>Name of the build folder that holds the most recent build images, taken to be compared to the approved images. This can also be the path to a folder.</p>
+
+<h4>
+<a id="optionshighlightfolder" class="anchor" href="#optionshighlightfolder" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.highlightFolder</h4>
+
+<p>Type: <code>String</code> --optional-- (default: 'highlight')</p>
+
+<p>Name of the highlight folder that will be used as the result folder, showing all the differences found during visual regression tests. This can also be the path to a folder.</p>
+
+<h4>
+<a id="optionsconfigfolder" class="anchor" href="#optionsconfigfolder" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.configFolder</h4>
+
+<p>Type: <code>String</code> --optional-- (default: 'config')</p>
+
+<p>Name of the config folder that describes image specific configurations the overwrite global configuration options that were given with the <code>config</code> property above. This can also be the path to a folder.</p>
+
+<h4>
+<a id="optionsfailorphans" class="anchor" href="#optionsfailorphans" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.failOrphans</h4>
+
+<p>Type: <code>Boolean</code> --optional-- (default: false)</p>
+
+<p>Defines if a test should fail when a previously approved images is missing from the current build images. This might happen if not all the screenshots could be taken due to an error, or it might simply be removed from the test-cases.</p>
+
+<h4>
+<a id="optionsfailadditions" class="anchor" href="#optionsfailadditions" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.failAdditions</h4>
+
+<p>Type: <code>Boolean</code> --optional-- (default: false)</p>
+
+<p>Defines if a test should fail when a previously unseen image appears in the build images. You might want to fail these tests to manually approve them; if they are not approved, then they will never be really compared.</p>
+
+<h4>
+<a id="optionstestpath" class="anchor" href="#optionstestpath" aria-hidden="true"><span class="octicon octicon-link"></span></a>options.testPath</h4>
+
+<p>Type: <code>String</code> --optional-- (default: current working directory)</p>
+
+<p>Path to directory holding all the test-folders (i.e. <code>approved</code>, <code>build</code>, <code>highlight</code>, and <code>config</code>).</p>
+
+<h3>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage Examples</h3>
+
+<h4>
+<a id="default-options" class="anchor" href="#default-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Default Options</h4>
+
+<p>You can supply the configuration in the options object of a task:</p>
+
+<div class="highlight highlight-javascript"><pre>grunt.initConfig({
+    kobold<span class="pl-k">:</span> {
+        ci<span class="pl-k">:</span> {
+            options<span class="pl-k">:</span> {
+                <span class="pl-en">config</span>: <span class="pl-en">require</span>('./<span class="pl-smi">config</span>.js')
+            }
+        }
+    }
+})</pre></div>
+
+<h4>
+<a id="inline-options" class="anchor" href="#inline-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inline Options</h4>
+
+<p>You can supply the configuration inline in the options object of a task:</p>
+
+<div class="highlight highlight-javascript"><pre>grunt.initConfig({
+    kobold<span class="pl-k">:</span> {
+        ci<span class="pl-k">:</span> {
+            options<span class="pl-k">:</span> {
+                config<span class="pl-k">:</span> {
+                    <span class="pl-s"><span class="pl-pds">"</span>outputBackgroundGreen<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">255</span>
+                }
+            }
+        }
+    }
+})</pre></div>
+
+<p>Here another example, but with more options:</p>
+
+<div class="highlight highlight-javascript"><pre>grunt.initConfig({
+
+    kobold<span class="pl-k">:</span> {
+
+        ci<span class="pl-k">:</span> {
+            options<span class="pl-k">:</span> {
+                config<span class="pl-k">:</span> {
+                    <span class="pl-s"><span class="pl-pds">"</span>outputBackgroundGreen<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">255</span>
+                },
+
+                highlightFolder<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>result<span class="pl-pds">"</span></span>,
+
+                failOrphans<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+                failAdditions<span class="pl-k">:</span> <span class="pl-c1">true</span>
+            }
+        }
+    }
+})</pre></div>
+
+<h2>
+<a id="third-party-libraries" class="anchor" href="#third-party-libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Third-party libraries</h2>
+
+<p>The following third-party libraries are used by this module:</p>
+
+<h3>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<ul>
+<li>kobold: <a href="https://github.com/yahoo/kobold">https://github.com/yahoo/kobold</a>
+</li>
+</ul>
+
+<h3>
+<a id="dev-dependencies" class="anchor" href="#dev-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dev-Dependencies</h3>
+
+<ul>
+<li>grunt: <a href="http://gruntjs.com">http://gruntjs.com</a>
+</li>
+<li>chai: <a href="http://chaijs.com">http://chaijs.com</a>
+</li>
+<li>codeclimate-test-reporter: <a href="https://github.com/codeclimate/javascript-test-reporter">https://github.com/codeclimate/javascript-test-reporter</a>
+</li>
+<li>coveralls: <a href="https://github.com/cainus/node-coveralls">https://github.com/cainus/node-coveralls</a>
+</li>
+<li>istanbul: <a href="https://github.com/gotwarlost/istanbul">https://github.com/gotwarlost/istanbul</a>
+</li>
+<li>mocha: <a href="https://github.com/visionmedia/mocha">https://github.com/visionmedia/mocha</a>
+</li>
+<li>sinon: <a href="http://sinonjs.org">http://sinonjs.org</a>
+</li>
+<li>sinon-chai: <a href="https://github.com/domenic/sinon-chai">https://github.com/domenic/sinon-chai</a>
+</li>
+<li>yuidocjs: <a href="https://github.com/yui/yuidoc">https://github.com/yui/yuidoc</a>
+</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT License</p>
+
+<p>Copyright 2015 Marcel Erz</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/preceptorjs/grunt-kobold">Grunt-kobold</a> is maintained by <a href="https://github.com/preceptorjs">preceptorjs</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-61373326-3");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
+
