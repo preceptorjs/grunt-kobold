@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib/options.js - grunt-kobold</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="grunt-kobold"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.9.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: lib/options.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+var os = require(&#x27;os&#x27;);
+var fs = require(&#x27;fs&#x27;);
+var path = require(&#x27;path&#x27;);
+
+/**
+ * Creates a temp configuration file
+ *
+ * @method createTempConfig
+ * @param {object} config Configuration options
+ */
+var createTempConfig = function (config) {
+
+	// Get temp-file
+	optionsFn.tmpPath = path.join(optionsFn.getTmpDir(), +(new Date()) + &#x27;.json&#x27;);
+
+	try {
+		fs.writeFileSync(optionsFn.tmpPath, JSON.stringify(config, null, 4));
+	} catch (err) {
+		optionsFn.tmpPath = null;
+		console.error(err.stack);
+	}
+};
+
+/**
+ * Removes the temp files for configuration
+ *
+ * @method removeTempConfig
+ */
+var removeTempConfig = function () {
+
+	if (optionsFn.tmpPath) {
+
+		try {
+			fs.unlinkSync(optionsFn.tmpPath);
+		} catch (err) {
+			optionsFn.tmpPath = null;
+			console.error(err.stack);
+		}
+	}
+};
+
+/**
+ * Loads all Kobold arguments from the options
+ *
+ * @method buildKoboldArguments
+ * @param {object} options Kobold image comparison options
+ * @return {string[]} List of arguments for Kobold
+ */
+var buildKoboldArguments = function (options) {
+
+	// Get arguments for Mocha
+	var args = options.mochaArgs || [];
+
+	// Add config file if config is given
+	if (options.config) {
+
+		// Create temp file for configuration
+		optionsFn.createTempConfig(options.config);
+
+		// Add config file
+		if (optionsFn.tmpPath) {
+			args.push(&#x27;--config&#x27;);
+			args.push(optionsFn.tmpPath);
+		}
+	}
+
+	// Get other options
+	if (options.approvedFolder) {
+		args.push(&#x27;--approved-folder&#x27;);
+		args.push(options.approvedFolder);
+	}
+	if (options.buildFolder) {
+		args.push(&#x27;--build-folder&#x27;);
+		args.push(options.buildFolder);
+	}
+	if (options.highlightFolder) {
+		args.push(&#x27;--highlight-folder&#x27;);
+		args.push(options.highlightFolder);
+	}
+	if (options.configFolder) {
+		args.push(&#x27;--config-folder&#x27;);
+		args.push(options.configFolder);
+	}
+
+	if (options.failOrphans) {
+		args.push(&#x27;--fail-orphans&#x27;);
+	}
+	if (options.failAdditions) {
+		args.push(&#x27;--fail-additions&#x27;);
+	}
+
+	// Test-path
+	args.push(options.testPath || process.cwd());
+
+	return args;
+};
+
+/**
+ * Gets the Kobold path
+ *
+ * @method getKoboldPath
+ * @return {string} Path to the Kobold binary
+ */
+var getKoboldPath = function () {
+	return path.resolve(path.join(__dirname, &#x27;..&#x27;, &#x27;node_modules&#x27;, &#x27;kobold&#x27;, &#x27;bin&#x27;, &#x27;kobold&#x27;));
+};
+
+/**
+ * Determines the temp directory
+ *
+ * @method getTmpDir
+ * @return {string} Path to temp directory
+ */
+var getTmpDir = function () {
+	return os.tmpdir();
+};
+
+
+/**
+ * @static
+ * @type {object}
+ */
+var optionsFn = {
+
+	/**
+	 * @property tmpPath
+	 * @type {string|null}
+	 */
+	tmpPath: null,
+
+
+	/**
+	 * @property createTempConfig
+	 * @type {function}
+	 */
+	createTempConfig: createTempConfig,
+
+	/**
+	 * @property removeTempConfig
+	 * @type {function}
+	 */
+	removeTempConfig: removeTempConfig,
+
+
+	/**
+	 * @property buildKoboldArguments
+	 * @type {function}
+	 */
+	buildKoboldArguments: buildKoboldArguments,
+
+
+	/**
+	 * @property getKoboldPath
+	 * @type {function}
+	 */
+	getKoboldPath: getKoboldPath,
+
+	/**
+	 * @property getTmpDir
+	 * @type {function}
+	 */
+	getTmpDir: getTmpDir
+};
+
+module.exports = optionsFn;
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

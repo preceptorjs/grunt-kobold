@@ -1,0 +1,147 @@
+{
+    "project": {
+        "name": "grunt-kobold",
+        "description": "Grunt plugin for Kobold",
+        "version": "0.9.0"
+    },
+    "files": {
+        "lib/options.js": {
+            "name": "lib/options.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {},
+    "classitems": [
+        {
+            "file": "lib/options.js",
+            "line": 5,
+            "description": "Creates a temp configuration file",
+            "itemtype": "method",
+            "name": "createTempConfig",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "Configuration options",
+                    "type": "Object"
+                }
+            ],
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 24,
+            "description": "Removes the temp files for configuration",
+            "itemtype": "method",
+            "name": "removeTempConfig",
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 42,
+            "description": "Loads all Kobold arguments from the options",
+            "itemtype": "method",
+            "name": "buildKoboldArguments",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Kobold image comparison options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "List of arguments for Kobold",
+                "type": "String[]"
+            },
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 98,
+            "description": "Gets the Kobold path",
+            "itemtype": "method",
+            "name": "getKoboldPath",
+            "return": {
+                "description": "Path to the Kobold binary",
+                "type": "String"
+            },
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 108,
+            "description": "Determines the temp directory",
+            "itemtype": "method",
+            "name": "getTmpDir",
+            "return": {
+                "description": "Path to temp directory",
+                "type": "String"
+            },
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 119,
+            "static": 1,
+            "type": "{object}",
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 125,
+            "itemtype": "property",
+            "name": "tmpPath",
+            "type": "{string|null}",
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 132,
+            "itemtype": "property",
+            "name": "createTempConfig",
+            "type": "{function}",
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 138,
+            "itemtype": "property",
+            "name": "removeTempConfig",
+            "type": "{function}",
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 145,
+            "itemtype": "property",
+            "name": "buildKoboldArguments",
+            "type": "{function}",
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 152,
+            "itemtype": "property",
+            "name": "getKoboldPath",
+            "type": "{function}",
+            "class": ""
+        },
+        {
+            "file": "lib/options.js",
+            "line": 158,
+            "itemtype": "property",
+            "name": "getTmpDir",
+            "type": "{function}",
+            "class": ""
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type",
+            "line": " lib/options.js:119"
+        }
+    ]
+}
