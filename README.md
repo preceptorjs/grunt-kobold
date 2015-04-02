@@ -15,7 +15,6 @@ Grunt plugin for Kobold
 [![NPM](https://nodei.co/npm-dl/grunt-kobold.png?months=3&height=2)](https://www.npmjs.com/package/grunt-kobold)
 
 [![Coverage Report](https://img.shields.io/badge/Coverage_Report-Available-blue.svg)](http://preceptorjs.github.io/grunt-kobold/coverage/lcov-report/)
-[![API Documentation](https://img.shields.io/badge/API_Documentation-Available-blue.svg)](http://preceptorjs.github.io/grunt-kobold/docs/)
 
 [![Gitter Support](https://img.shields.io/badge/Support-Gitter_IM-yellow.svg)](https://gitter.im/preceptorjs/support)
 
